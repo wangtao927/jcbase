@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>同城爱约</title>
+    <link href="css/wap2/public_reset.css" tppabs="http://v3.9938527.cn/css/wap2/public_reset.css" rel="stylesheet" type="text/css"/>
+    <link href="css/wap2/css.css-id=20160128.css" tppabs="http://v3.9938527.cn/css/wap2/css.css?id=20160128" rel="stylesheet" type="text/css"/>
+    <link href="css/wap2/public.css-id=20160126.css" tppabs="http://v3.9938527.cn/css/wap2/public.css?id=20160126" rel="stylesheet" type="text/css">
+    <link href="css/wap2/public_headmessage.css" tppabs="http://v3.9938527.cn/css/wap2/public_headmessage.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../lib.applinzi.com/js/jquery/1.7.2/jquery.min.js" tppabs="http://lib.applinzi.com/js/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.lazyload.min.js" tppabs="http://v3.9938527.cn/js/jquery.lazyload.min.js"></script>
+</head>
+
+<body>
+<div class="wap_box">
+    <div class="near_list">
+        <ul></ul>
+    </div>
+    <div class="find_more"></div>
+    <div class="dibu_qzh"><a href="javascript:;" onclick="sayHiUser(0, 0);tj(1);"><i><img
+                        src="images/wap2/chat_ico.png" tppabs="http://v3.9938527.cn/images/wap2/chat_ico.png"/></i>群打招呼</a>
+    </div>
+    <div class="blank120"></div>
+     <div class="main_menu">
+        <ul>
+
+	<li class=""><a href="wx/home.php-m=Home&c=Home&a=regTwo.htm" tppabs="http://v3.9938527.cn/"><i><img src="images/wap2/heart01.png" tppabs="http://v3.9938527.cn/images/wap2/heart01.png" /></i>缘分</a></li>
+	<li class=""><a href="msgList.php.htm" tppabs="http://v3.9938527.cn/msgList.php"><i><img src="images/wap2/mail01.png" tppabs="http://v3.9938527.cn/images/wap2/mail01.png" /></i>消息</a>
+		</li>
+	<li class="current"><a href="nearby.php.htm" tppabs="http://v3.9938527.cn/nearby.php"><i><img src="images/wap2/near02.png" tppabs="http://v3.9938527.cn/images/wap2/near02.png" /></i>附近</a></li>
+	<li class=""><a href="userInfo.php.htm" tppabs="http://v3.9938527.cn/userInfo.php"><i><img src="images/wap2/our01.png" tppabs="http://v3.9938527.cn/images/wap2/our01.png" /></i>我的</a></li>
+</ul>    </div>
+</div>
+    
+
+<!--消息提示开始-->
+<div class="message_tip" style="display: none;">招呼已发出，请耐心等待Ta的回复</div>
+<!--消息提示结束-->
+<script type="text/javascript" language="JavaScript">
+    function tj(type) {
+        $.get("/user/z", {
+            type: type
+        });
+    }
+    var wait = 2;
+
+    function loadData(page, x, y) {
+        $.ajax({
+            type: 'GET',
+            url: '/api/around.php?page=' + page + '&x=' + x + '&y=' + y + '&r=' + Math.random(),
+            async: false,
+			dataType: 'json',
+            success: function (data) {
+                var str = '', city = '';
+                if (data!= '' && data!= null && data!= undefined) {
+                    $.each(data['userList'], function (i, item) {
+                        if (item['province']) {
+//                            city = item['province'] + ' ' + item['city'];
+                            city = item['province'];
+                        } else {
+                            if (item['city']) {
+                                city = item['city'];
+                            }
+                        }
+						quyu = item['quyu'];
+                        str += '<li id="' + item.uid + '" channeluid="' + item.channel_uid + '">';
+                        str += '<div class="fk_head">';
+                        //str += '<a href="otherDetail.php?uid=' + item.uid + '&r=' + Math.random() + '"><img src="' + item.avatar + '"/></a>';
+						str += '<a href="otherDetail.php?uid=' + item.uid + '&r=' + Math.random() + '"><img src=" images/load.gif"/*tpa=http://v3.9938527.cn/images/load.gif*/ data-original="' + item.avatar + '"/></a>';
+                        str += '</div>';
+                        str += '<h2>';
+                        str += '<span>' + item.distance + 'km</span>';
+//                        str += '<span>' + getRandom(8, 3) + 'km</span>';
+                        str += '<a href="otherDetail.php?uid=' + item.uid + '&r=' + Math.random() + '">' + item.nickname + '</a>';
+                        str += '</h2>';
+                        //      str += '<p>' + item.age + '岁.' + city + '.' + item.height + 'cm</p>';
+							if (item.height>0) {
+								str += '<p>' + item.age + '岁.' + city + '-' + quyu + '.' + item.height + 'cm</p>';
+							} else {
+								str += '<p>' + item.age + '岁.' + city + '-' + quyu + '</p>';
+							}
+                        if (item.datingfor) {
+                            str += '<p>' + item.datingfor + '</p>';
+                        }
+						
+						if(!idExists(item.uid)){
+							//不存在，显示打招呼
+							 str += '<div class="time_zt"><a id="dzh_a_' + item.uid + '" href="javascript:;" onclick="sayHiUser(' + item.uid + ', ' + item.channel_uid + ')">打招呼</a></div>';
+						}else{
+							//存在，显示已打招呼
+								 str += '<div class="time_zt"><a id="dzh_a_' + item.uid + '" href="javascript:;" onclick="" style="border: 1px solid rgb(149, 149, 149); color: rgb(149, 149, 149);"><span>已打招呼</span></a></div>';
+						}
+                       
+                        str += '<div class="clear"></div>';
+                        str += '</li>';
+                    }); //each结束语块
+                }
+                                $('.find_more').html('<a href="nearby.php.htm"/*tpa=http://v3.9938527.cn/nearby.php*/>点击查看更多</a>');
+                                $('.near_list ul').append(str);
+            }
+        })
+		$('img').lazyload({
+			effect : 'fadeIn',
+			//failure_limit : 10,
+			skip_invisible : false
+		});
+    }
+
+    //一键打招呼
+    function sayHiUser(toid, channelid) {
+        var url = '';
+	
+        if (toid > 0) {
+            url = '/api/sayHiUser.php?toId=' + toid + '&ChannelId=' + channelid + '&r=' + Math.random();
+        } else {
+            var idArr = new Array();
+            var liLength = $('.near_list ul li').length;
+            for (var i = 0; i < liLength; i++) {
+                var user_id = $('.near_list ul li').eq(i).attr('id');
+                var channel_uid = $('.near_list ul li').eq(i).attr('channeluid');
+                if (user_id != '' && user_id != 'undefined' && channel_uid != '' && channel_uid != 'undefined') {
+					if(!idExists(user_id)){
+						 idArr[i] = user_id + '_' + channel_uid;
+						 setCookies(user_id);
+					}
+                    $('#dzh_a_' + $('.near_list ul li').eq(i).attr('id')).attr('onclick', '');
+                    $('#dzh_a_' + $('.near_list ul li').eq(i).attr('id')).css('border', '1px #959595 solid');
+                    $('#dzh_a_' + $('.near_list ul li').eq(i).attr('id')).css('color', '#959595');
+                    $('#dzh_a_' + $('.near_list ul li').eq(i).attr('id')).html('已打招呼');
+					
+                }
+            }
+            if (idArr.length > 0) {
+                url = '/api/sayHiUser.php?toIdsAndChannelIds=' + idArr + '&r=' + Math.random();
+            } else {
+                url = '';
+            }
+        }
+
+        if (url) {
+            $.ajax({
+                type: 'GET',
+                url: url,
+                async: false,
+				dataType: 'json',
+                success: function (data) {
+//                var m = jQuery.parseJSON(data);
+                    if (data['result'] == 'success') {
+                        if (toid > 0) {
+							setCookies(toid);
+                            $('#dzh_a_' + toid).attr('onclick', '');
+                            $('#dzh_a_' + toid).css('border', '1px #959595 solid');
+                            $('#dzh_a_' + toid).css('color', '#959595');
+                            $('#dzh_a_' + toid).html('已打招呼');
+                        } else {
+//                        $('.dibu_qzh a').attr('onclick', '');
+//                        $('.dibu_qzh a').css('background-color', '#959595');
+//                        $('.dibu_qzh a').html('<i><img src="images/wap2/chat_ico.png"/*tpa=http://v3.9938527.cn/images/wap2/chat_ico.png*//></i>已打招呼');
+                        }
+                        $('.message_tip').toggle(500);
+                        time();
+                    } else {
+                        $('.message_tip').html('打招呼失败！');
+                        $('.message_tip').toggle(500);
+                        time();
+                    }
+                }
+            })
+        }
+    }
+
+    //60秒倒计时
+    function time() {
+        if (wait == 0) {
+            $('.message_tip').toggle(500);
+            wait = 2;
+        } else {
+            wait--;
+            setTimeout(function () {
+                time()
+            }, 1000)
+        }
+    }
+
+    function getRandom(maxs, mins) {  //随机生成maxs到mins之间的数
+        return Math.round(Math.random() * (maxs - mins)) + mins;
+    }
+
+    function hide_subscribe() {
+        $('.gray_cover').toggle();
+        $('.code_box').toggle();
+        $('.float_gz').toggle();
+    }
+
+    function upXy(x, y) {
+        $.get("/Index/upXy", {
+            x: x,
+            y: y
+        });
+    }
+	function setCookies(fid){
+		var arr = document.cookie.match(new RegExp("(^| )ids=([^;]*)(;|$)"));  
+		var Days = 30;
+		var exp = new Date();
+		if(arr!=''&&arr!=null){
+			fid=unescape(arr[2])+","+fid;
+		}
+		exp.setTime(exp.getTime() + Days*24*60*60*1000);
+		document.cookie = "ids" + "="+ fid + ";expires=" + exp.toGMTString();
+		
+	}
+	function idExists(fid){
+		var arr = document.cookie.match(new RegExp("(^| )ids=([^;]*)(;|$)"));  
+		if(arr != ''&&arr != null){
+			//cooki存在
+			var str=unescape(arr[2]);
+			if(str.indexOf(fid)==-1){
+				//cooki没有fid
+				return false;
+			}else{
+				return true;
+			}
+		}else{
+			//cooki为空，不存在
+			return false;
+		}
+	}
+</script>
+</body>
+<script src="../res.wx.qq.com/open/js/jweixin-1.0.0.js" tppabs="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" language="JavaScript">
+        loadData(1, 0, 0);
+    
+</script>
+</html>

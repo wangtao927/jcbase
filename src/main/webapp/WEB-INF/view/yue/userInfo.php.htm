@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh" class="pu">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>同城爱约</title>
+    <link href="css/wap2/public_reset.css" tppabs="http://v3.9938527.cn/css/wap2/public_reset.css" rel="stylesheet" type="text/css">
+    <link href="css/wap2/public.css" tppabs="http://v3.9938527.cn/css/wap2/public.css" rel="stylesheet" type="text/css">
+    <link href="css/wap2/option_box.css" tppabs="http://v3.9938527.cn/css/wap2/option_box.css" rel="stylesheet" type="text/css">
+    <link href="css/wap2/public_disbox.css" tppabs="http://v3.9938527.cn/css/wap2/public_disbox.css" rel="stylesheet" type="text/css">
+    <link href="css/wap2/public_headmessage.css" tppabs="http://v3.9938527.cn/css/wap2/public_headmessage.css" rel="stylesheet" type="text/css">
+    <link href="css/wap2/head_nav.css" tppabs="http://v3.9938527.cn/css/wap2/head_nav.css" rel="stylesheet" type="text/css">
+    <link href="css/wap2/user-list.css" tppabs="http://v3.9938527.cn/css/wap2/user-list.css" rel="stylesheet" type="text/css">
+    <link href="css/wap2/user_box.css" tppabs="http://v3.9938527.cn/css/wap2/user_box.css" rel="stylesheet" type="text/css">
+    <link href="css/wap2/myspace.css" tppabs="http://v3.9938527.cn/css/wap2/myspace.css" rel="stylesheet" type="text/css">
+    <link href="css/wap2/css.css" tppabs="http://v3.9938527.cn/css/wap2/css.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../lib.applinzi.com/js/jquery/1.7.2/jquery.min.js" tppabs="http://lib.applinzi.com/js/jquery/1.7.2/jquery.min.js"></script>
+    <script src="js/layer/layer.js-v=1.93.js" tppabs="http://v3.9938527.cn/js/layer/layer.js?v=1.93"></script>
+    <script type="text/javascript" src="js/jquery.form.js" tppabs="http://v3.9938527.cn/js/jquery.form.js"></script>
+</head>
+<body yy="no">
+
+
+<div>
+    <div class="loading"><i></i>加载中...</div>
+    <div>
+        <section class="content wxcontent" id="myspace_section">
+            <section class="my_space">
+                <div class="user_box">
+                    <dl class="user">
+                        <dt id="change_icon" style="position: relative; overflow: hidden;">
+                        <form id="imageForm" action="http://v3.9938527.cn/uploadPortrait.php" method="post" enctype="multipart/form-data">
+                            <a id="clickMyImg" href="javascript:;" onclick="clickMyImg()">
+                                    <img src="images/wap2/boy.png" tppabs="http://v3.9938527.cn/images/wap2/boy.png">
+                                    <div class="checking">审核中</div>
+                                                            </a>
+                            <input type="file" name="myImg" id="myImg" style="display: none;"/>
+                        </form>
+                        </dt>
+                        <dd>
+                            <b class="name"> ID:</b>
+                            <p>
+								岁·
+								未知                            </p>
+                            <p>
+                                <span onclick="location.href = 'http://v3.9938527.cn/userCenter.php';" class="vip noCheck">VIP</span>
+								<span class="phone Check">微信认证</span>
+							</p>
+                        </dd>
+                    </dl>
+                </div>
+				<div class="section_1" style="font-size:13px; color:red;">
+					上传真实头像才会被推荐在首页给异性哦！！！
+				</div>
+                <div class="btn">
+                    <span onclick="location.href = 'http://v3.9938527.cn/myConcern.php';" class="disbox-center">我喜欢的</span>
+                    <span onclick="location.href = 'http://v3.9938527.cn/concernMy.php';" class="disbox-center">喜欢我的</span>
+                </div>
+
+                <div class="section_1">
+                    <ul class="disbox-hor user-list">
+                        <li class="disbox-flex">包月VIP</li>
+													<li class="disbox-center pink" onclick="location.href = 'http://v3.9938527.cn/payVip.php';">立即开通
+                                <div class="right_trg"></div>
+							</li>
+																		
+						
+                        </ul>
+                </div>
+                <div class="section_1">
+                    <ul onclick="location.href = 'http://v3.9938527.cn/myImgup.php';" class="disbox-hor user-list">
+                        <li class="disbox-flex">我的相册</li>
+                        <li class="disbox-center">
+                            <div class="re_trg"></div>
+                        </li>
+                    </ul>
+                    <ul onclick="location.href = 'http://v3.9938527.cn/aboutme.php';" class="disbox-hor user-list">
+                        <li class="disbox-flex">详细资料   <font color=red>填写您的微信号便于异性联系</font></li>
+                        <li class="disbox-center">
+							<span class="no_finish">未完成</span>                            <div class="re_trg"></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="section_1">
+                    <ul onclick="location.href = 'http://v3.9938527.cn/myInfo.php';" class="disbox-hor user-list">
+                        <li class="disbox-flex">基本资料</li>
+                        <li class="disbox-center">
+                                                        <div class="re_trg"></div>
+                        </li>
+                    </ul>
+                    
+                    <ul onclick="location.href = 'http://v3.9938527.cn/center.php';" class="disbox-hor user-list">
+                        <li class="disbox-flex">征友条件</li>
+                        <li class="disbox-center">
+                            <span class="no_finish">未完成</span>                            <div class="re_trg"></div>
+                        </li>
+                    </ul>
+                </div>
+				<!--div class="section_1">
+                    <ul onclick="location.href = '/logout.php';" class="disbox-hor user-list">
+                        <li class="disbox-flex">退出</li>
+                        <li class="disbox-center">
+                                                        <div class="re_trg"></div>
+                        </li>
+                    </ul>
+                </div-->
+				<div class="service">
+                    <h3>工作时间：<b></b></h3>
+                    <p>周一至周五09:00-12:00 &nbsp; 14:00-18:00</p>
+                </div>
+				<div class="service">
+                    <h3>客服电话：<b></b></h3>
+                    <p>4001020225</p>
+                </div>
+				<!--div class="service">
+                    <h3>客服微信：<b></b></h3>
+                    <p>3112764975</p>
+                </div>
+                <div class="section_1">
+                    <ul onclick="location.href = '/Index/setting';" class="disbox-hor user-list">
+                        <li class="disbox-flex">设置中心</li>
+                        <li class="disbox-center">
+                            <div class="re_trg"></div>
+                        </li>
+                    </ul>
+                </div-->
+
+                <div class="CC_Box" style="margin:10px 0;">
+                    <div id="CC123" class="CC_Box_li">
+                        <ul></ul>
+                    </div>
+                </div>
+            </section>
+    </div>
+</div>
+
+<div class="blank70"></div>
+
+    <div class="main_menu">
+        <ul>
+
+	<li class=""><a href="wx/home.php-m=Home&c=Home&a=regTwo.htm" tppabs="http://v3.9938527.cn/"><i><img src="images/wap2/heart01.png" tppabs="http://v3.9938527.cn/images/wap2/heart01.png" /></i>缘分</a></li>
+	<li class=""><a href="msgList.php.htm" tppabs="http://v3.9938527.cn/msgList.php"><i><img src="images/wap2/mail01.png" tppabs="http://v3.9938527.cn/images/wap2/mail01.png" /></i>消息</a>
+		</li>
+	<li class=""><a href="nearby.php.htm" tppabs="http://v3.9938527.cn/nearby.php"><i><img src="images/wap2/near01.png" tppabs="http://v3.9938527.cn/images/wap2/near01.png" /></i>附近</a></li>
+	<li class="current"><a href="userInfo.php.htm" tppabs="http://v3.9938527.cn/userInfo.php"><i><img src="images/wap2/our02.png" tppabs="http://v3.9938527.cn/images/wap2/our02.png" /></i>我的</a></li>
+</ul>    </div>
+
+
+
+
+
+<script type="text/javascript" language="JavaScript">
+    $(function () {
+        $('#myImg').live('change', function () {
+            $("#clickMyImg").html('<img src="images/wechat/loader.gif"/*tpa=http://v3.9938527.cn/images/wechat/loader.gif*/ />');
+            $("#imageForm").ajaxForm({
+//                target: '#preview',
+                dataType: 'json',
+                success: showResponse,
+				error : function(){
+					$("#clickMyImg").html('<span style="color:red">上传失败</span>');
+				},
+            }).submit();
+        });
+    });//jquery结束语块
+
+    function showResponse(data) {
+        if (data.result == 'success') {
+            window.location.reload();
+        }
+    }
+
+    function clickMyImg() {
+        $('#myImg').click();
+    }
+
+    function hide_subscribe() {
+        $('.gray_cover').toggle();
+        $('.code_box').toggle();
+        $('.float_gz').toggle();
+    }
+</script>
+</body>
+</html>

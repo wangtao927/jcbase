@@ -1,0 +1,51 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>同城爱约</title>
+    <link href="css/wap2/public_reset.css" tppabs="http://v3.9938527.cn/css/wap2/public_reset.css" rel="stylesheet" type="text/css">
+    <link href="css/wap2/public.css-id=20160126.css" tppabs="http://v3.9938527.cn/css/wap2/public.css?id=20160126" rel="stylesheet" type="text/css">
+    <link href="css/wap2/photo_upload.css" tppabs="http://v3.9938527.cn/css/wap2/photo_upload.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../lib.applinzi.com/js/jquery/1.7.2/jquery.min.js" tppabs="http://lib.applinzi.com/js/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.form.js" tppabs="http://v3.9938527.cn/js/jquery.form.js"></script>
+</head>
+<body>
+<div class="top_blank"></div>
+<nav class="nav" style="position: absolute;">
+            <h2>漾的相册</h2>
+        <div class="left" onclick="history.go(-1);"><i class="le_trg"></i>返回</div>
+    </nav>
+<div class="content">
+    <section class="my_photo">
+        <form id="imageForm" action="javascript:if(confirm(%27http://v3.9938527.cn/uploadPhoto  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?%27))window.location=%27http://v3.9938527.cn/uploadPhoto%27" tppabs="http://v3.9938527.cn/uploadPhoto" method="post" enctype="multipart/form-data">
+            <ol class="add_photo">
+            <li>	<a href="javascript:if(confirm(%27http://v3.9938527.cn/imgMore.php?uid=22283  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?%27))window.location=%27http://v3.9938527.cn/imgMore.php?uid=22283%27" tppabs="http://v3.9938527.cn/imgMore.php?uid=22283">		<img src="../pic.9938527.cn/uploads/photo/201605/3d8a133ff445e6b171e0.jpg" tppabs="http://pic.9938527.cn/uploads/photo/201605/3d8a133ff445e6b171e0.jpg"/>	</a></li><li>	<a href="javascript:if(confirm(%27http://v3.9938527.cn/imgMore.php?uid=22283  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?%27))window.location=%27http://v3.9938527.cn/imgMore.php?uid=22283%27" tppabs="http://v3.9938527.cn/imgMore.php?uid=22283">		<img src="../pic.9938527.cn/uploads/photo/201605/5f7850c253b0c3d8004f.jpg" tppabs="http://pic.9938527.cn/uploads/photo/201605/5f7850c253b0c3d8004f.jpg"/>	</a></li><li>	<a href="javascript:if(confirm(%27http://v3.9938527.cn/imgMore.php?uid=22283  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?%27))window.location=%27http://v3.9938527.cn/imgMore.php?uid=22283%27" tppabs="http://v3.9938527.cn/imgMore.php?uid=22283">		<img src="../pic.9938527.cn/uploads/photo/201605/71840f307f41bd99218e.jpg" tppabs="http://pic.9938527.cn/uploads/photo/201605/71840f307f41bd99218e.jpg"/>	</a></li><li>	<a href="javascript:if(confirm(%27http://v3.9938527.cn/imgMore.php?uid=22283  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?%27))window.location=%27http://v3.9938527.cn/imgMore.php?uid=22283%27" tppabs="http://v3.9938527.cn/imgMore.php?uid=22283">		<img src="../pic.9938527.cn/uploads/photo/201605/3813207a7b5bde0c7351.jpg" tppabs="http://pic.9938527.cn/uploads/photo/201605/3813207a7b5bde0c7351.jpg"/>	</a></li><li>	<a href="javascript:if(confirm(%27http://v3.9938527.cn/imgMore.php?uid=22283  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?%27))window.location=%27http://v3.9938527.cn/imgMore.php?uid=22283%27" tppabs="http://v3.9938527.cn/imgMore.php?uid=22283">		<img src="../pic.9938527.cn/uploads/photo/201605/1f4922fb866ffdce367e.jpg" tppabs="http://pic.9938527.cn/uploads/photo/201605/1f4922fb866ffdce367e.jpg"/>	</a></li>			</ol>
+        </form>
+    </section>
+</div>
+<script type="text/javascript" language="JavaScript">
+    $(function () {
+        $('#myImg').live('change', function () {
+            $("#clickMyImg").html('<img src="images/wechat/loader.gif"/*tpa=http://v3.9938527.cn/images/wechat/loader.gif*/ />');
+            $("#imageForm").ajaxForm({
+//                target: '#preview',
+                success: showResponse
+            }).submit();
+        });
+    });//jquery结束语块
+
+    function showResponse(data) {
+        if (data.result == 'success') {
+            window.location.reload();
+        }
+    }
+
+    function clickMyImg() {
+        $('#myImg').click();
+    }
+</script>
+</body>
+</html>

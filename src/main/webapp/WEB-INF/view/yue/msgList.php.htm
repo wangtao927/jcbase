@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html; charset=utf8" http-equiv="Content-Type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>同城爱约</title>
+    <link href="css/wap2/public_reset.css" tppabs="http://v3.9938527.cn/css/wap2/public_reset.css" rel="stylesheet" type="text/css"/>
+    <link href="css/wap2/css.css-id=20160128.css" tppabs="http://v3.9938527.cn/css/wap2/css.css?id=20160128" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../lib.applinzi.com/js/jquery/1.7.2/jquery.min.js" tppabs="http://lib.applinzi.com/js/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.lazyload.min.js" tppabs="http://v3.9938527.cn/js/jquery.lazyload.min.js"></script>
+</head>
+<body>
+<div class="wap_box">
+    <div class="man_list">
+        <div class="visitor">
+            
+        </div>
+        <div class="new_mail"><ul></ul></div>
+    </div>
+    <div class="look_more"></div>
+    <div class="main_menu">
+        <ul>
+
+	<li class=""><a href="wx/home.php-m=Home&c=Home&a=regTwo.htm" tppabs="http://v3.9938527.cn/"><i><img src="images/wap2/heart01.png" tppabs="http://v3.9938527.cn/images/wap2/heart01.png" /></i>缘分</a></li>
+	<li class="current"><a href="msgList.php.htm" tppabs="http://v3.9938527.cn/msgList.php"><i><img src="images/wap2/mail02.png" tppabs="http://v3.9938527.cn/images/wap2/mail02.png" /></i>消息</a>
+		</li>
+	<li class=""><a href="nearby.php.htm" tppabs="http://v3.9938527.cn/nearby.php"><i><img src="images/wap2/near01.png" tppabs="http://v3.9938527.cn/images/wap2/near01.png" /></i>附近</a></li>
+	<li class=""><a href="userInfo.php.htm" tppabs="http://v3.9938527.cn/userInfo.php"><i><img src="images/wap2/our01.png" tppabs="http://v3.9938527.cn/images/wap2/our01.png" /></i>我的</a></li>
+</ul>    </div>
+</div>
+<form action="javascript:if(confirm(%27http://v3.9938527.cn/letterShow.php?to_uid=&isMsg=&v=  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?%27))window.location=%27http://v3.9938527.cn/letterShow.php?to_uid=&isMsg=&v=%27" tppabs="http://v3.9938527.cn/letterShow.php?to_uid=&isMsg=&v=" method="post" id="postForm">
+    <input id="to_uid" name="to_uid" type="hidden" />
+    <input id="isMsg" name="isMsg" type="hidden" />
+    <input id="msgList" name="v" type="hidden" />
+</form>
+<script type="text/javascript" language="JavaScript">
+    var weikong = 0;
+
+    $(function () {
+        var isnull = 0, page = 1, num = 2;
+
+        letterList(page); //加载内容
+/*
+        $(window).scroll(function () {
+            var is_bool = reachBottom();
+            if (is_bool) {
+                if (isnull == 0) {
+                    isnull = letterList(num); //加载内容
+                    num++;
+                }
+            }
+        });
+*/
+
+    });//jquery结束语块
+
+    //加载信箱列表
+    function letterList(page) {
+        $.ajax({
+            type: 'GET',
+            url: '/api/letterList.php?limit=10&page=' + page + '&r=' + Math.random(),
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                var str = '';
+                if (data != '' && data != null && data != undefined) {
+                    $.each(data, function (i, item) {
+//                        alert(item['time']);
+                        if (item['is_msg']) {
+                            str += '<li onclick="showDialogue(' + item['uid'] + ',\'1\', \'' + item['msgList'] + '\');">';
+                        } else {
+                            str += '<li onclick="showDialogue(' + item['uid'] + ',\'0\', \'\');">';
+                        }
+                        str += '<div class="fk_head">';
+                        //str += '<img src="' + item['avatar'] + '"/>';
+						str += '<img src=" images/load.gif"/*tpa=http://v3.9938527.cn/images/load.gif*/ data-original="' + item['avatar'] + '"/>';
+                        str += '</div>';
+                        str += '<h2>';
+                        str += item['nickname'];
+//                        str += '<i>[最新回信]</i>';
+                        str += '</h2>';
+						str += '<p>';
+						str+=item['lastMessage'];
+						/*
+						if(item['age']!=''&&item['age']!=null&&item['age']!='null'){
+							 str +=item['age'] + '岁';
+						}
+						if(item['province']!=''&&item['province']!=null&&item['province']!='null'){
+							 str +='.' + item['province'];
+						}
+
+						if(item['city']!=''&&item['city']!=null&&item['city']!='null'){
+							 str +=' ' + item['city'];
+						}
+					
+						if(item['height']!=''&&item['height']!=null&&item['height']!='null'){
+							 str += '.' + item['height']+ 'cm';
+						}
+						*/
+						str += '</p>';
+                        //str += '<p>' + item['age'] + '岁.' + item['province'] + ' ' + item['city'] + '.' + item['height'] + 'cm</p>';
+                        
+                        if (item['is_msg']=='0') {
+							str += '<div class="time_zt">';
+							str += '<span>' + item['time'] + '</span>';
+                            str += '<b>未读</b>';
+                        }
+                        str += '</div>';
+                        str += '<div class="clear"></div>';
+                        str += '</li>';
+                    }); //each结束语块
+                    $('.new_mail ul').append(str);
+                } else {
+                    weikong++;
+                } //data!=null结束语块
+            }
+        })
+		$('img').lazyload({
+			effect : 'fadeIn',
+			//failure_limit : 10,
+			skip_invisible : false
+		});
+        return weikong;
+    }
+
+    function showDialogue(to_uid, isMsg, msgList) {
+        $('#to_uid').val(to_uid);
+        $('#isMsg').val(isMsg);
+        $('#msgList').val(msgList);
+        $('#postForm').submit();
+//        window.location.href = 'http://v3.9938527.cn/Index/letterShow?to_uid=' + to_uid + '&isMsg=' + isMsg;
+    }
+
+    //判断滚动条的位置是否在浏览器的底部
+    function reachBottom() {
+        var scrollTop = 0;
+        var clientHeight = 0;
+        var scrollHeight = 0;
+        if (document.documentElement && document.documentElement.scrollTop) {
+            scrollTop = document.documentElement.scrollTop;
+        } else if (document.body) {
+            scrollTop = document.body.scrollTop;
+        }
+        if (document.body.clientHeight && document.documentElement.clientHeight) {
+            clientHeight = (document.body.clientHeight < document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
+        } else {
+            clientHeight = (document.body.clientHeight > document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
+        }
+        scrollHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+        if (scrollTop + clientHeight == scrollHeight) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function formatDate(date, format) {
+        if (!date) return;
+        if (!format) format = "yyyy-MM-dd";
+        switch(typeof(date)) {
+            case "string":
+                date = new Date(date.replace(/-/, "/"));
+                break;
+            case "number":
+                date = new Date(date);
+                break;
+        }
+        if (!date instanceof Date) return;
+        var dict = {
+            "yyyy": date.getFullYear(),
+            "M": date.getMonth() + 1,
+            "d": date.getDate(),
+            "H": date.getHours(),
+            "m": date.getMinutes(),
+            "s": date.getSeconds(),
+            "MM": ("" + (date.getMonth() + 101)).substr(1),
+            "dd": ("" + (date.getDate() + 100)).substr(1),
+            "HH": ("" + (date.getHours() + 100)).substr(1),
+            "mm": ("" + (date.getMinutes() + 100)).substr(1),
+            "ss": ("" + (date.getSeconds() + 100)).substr(1)
+        };
+        return format.replace(/(yyyy|MM?|dd?|HH?|ss?|mm?)/g, function() {
+            return dict[arguments[0]];
+        });
+    }
+
+    function hide_subscribe() {
+        $('.gray_cover').toggle();
+        $('.code_box').toggle();
+        $('.float_gz').toggle();
+    }
+</script>
+</body>
+</html>
